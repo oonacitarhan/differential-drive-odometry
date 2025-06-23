@@ -8,3 +8,32 @@
 C++17 differential-drive pose integration using exact constant-curvature wheel increments.
 
 **Language:** C++ · **Scope:** small, inspectable educational prototype.
+
+## Run and verify
+
+Requires a C++17 compiler.
+
+```sh
+g++ -std=c++17 -Wall -Wextra -pedantic odometry.cpp -o /tmp/odometry-demo && /tmp/odometry-demo
+```
+
+The command runs the demonstration and built-in checks. Check failures produce
+a nonzero exit code. Verified locally on 2026-11-01.
+
+## Design and limits
+
+The implementation lives in [odometry.cpp](odometry.cpp) so the complete
+algorithm can be read in one sitting. Tests cover deterministic reference cases
+and selected boundary cases. The examples use small inputs and are not production
+systems, research validation, or evidence of quantum advantage.
+
+## Provenance
+
+The code and documentation were generated together on 2026-11-01. Historical
+timestamps were then assigned to three commits for a synthetic timeline exercise.
+No original repository history was rewritten. No third-party project was copied
+or presented as original work. Algorithm names describe standard methods.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
