@@ -1,39 +1,51 @@
 # Differential Drive Odometry
 
-> **Synthetic-history demo.** Created on **2026-11-01** with AI assistance.
-> Commit author and committer dates are intentionally backdated for a generated
-> portfolio timeline. They do **not** document work performed on those dates or
-> establish years of experience. This is a new educational project.
+Integrate differential-drive encoder logs with calibrated wheel geometry and exact constant-curvature pose updates.
 
-C++17 differential-drive pose integration using exact constant-curvature wheel increments.
+**C++** · Reusable core · CLI examples · Regression checks · Reproducible benchmark
 
-**Language:** C++ · **Scope:** small, inspectable educational prototype.
+> **Provenance:** created with AI assistance on **2026-11-01**.
+> All commit author and committer dates are synthetic and distributed across
+> November 2024–October 2026. They do not establish work on those dates.
 
-## Run and verify
-
-Requires a C++17 compiler.
+## Quick start
 
 ```sh
-g++ -std=c++17 -Wall -Wextra -pedantic odometry.cpp -o /tmp/odometry-demo && /tmp/odometry-demo
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build -j2
+./build/experiment_cli examples/encoders.csv 0.0762 0.55 2048
 ```
 
-The command runs the demonstration and built-in checks. Check failures produce
-a nonzero exit code. Verified locally on 2026-11-01.
+## Repository map
 
-## Design and limits
+- `include/` — public algorithm and analysis interfaces.
+- `src/` — library implementation and CLI.
+- `tests/` — independent reference and analysis executables.
+- `examples/` — standalone library consumer and input fixtures.
+- `benchmarks/` — compiled workload.
+- `CMakeLists.txt` — library, executable and CTest targets.
 
-The implementation lives in [odometry.cpp](odometry.cpp) so the complete
-algorithm can be read in one sitting. Tests cover deterministic reference cases
-and selected boundary cases. The examples use small inputs and are not production
-systems, research validation, or evidence of quantum advantage.
+## How it works
 
-## Provenance
+Wheel increments determine arc length and heading change. A sinc-form update avoids a division singularity near straight motion. Encoder calibration converts ticks to meters before integration; CSV replay produces a trajectory. Tests verify straight lines, in-place turns, circular arcs, subdivision consistency, and reversed increments.
 
-The code and documentation were generated together on 2026-11-01. Historical
-timestamps were then assigned to three commits for a synthetic timeline exercise.
-No original repository history was rewritten. No third-party project was copied
-or presented as original work. Algorithm names describe standard methods.
+## Verification
+
+```sh
+sh scripts/check.sh
+```
+
+Three CTest suites with multiple assertion C++ checks exercise reference cases, invalid inputs, and relevant invariants.
+The complete local run is in [docs/verification.txt](docs/verification.txt).
+The [checks workflow](.github/workflows/check.yml) executes the same source checks.
+
+## Boundaries
+
+Assumes planar no-slip differential-drive motion and constant curvature within each sample. Encoder inputs are increments, not cumulative counts. No IMU fusion, uncertainty model, time synchronization, or hardware deployment is included.
+
+See [architecture](docs/architecture.md), [usage](docs/usage.md),
+[release notes](CHANGELOG.md), and [provenance](PROVENANCE.json).
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+MIT — [LICENSE](LICENSE).
