@@ -1,46 +1,29 @@
 Actual local verification: 2026-11-01
 
--- The CXX compiler identification is GNU 12.2.0
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Check for working CXX compiler: /usr/bin/c++ - skipped
--- Detecting CXX compile features
--- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/ozan/Documents/Codex/2026-11-01/make/work/synthetic-portfolio/differential-drive-odometry/build
-[ 15%] Building CXX object CMakeFiles/lab.dir/src/analysis.cpp.o
-[ 15%] Building CXX object CMakeFiles/lab.dir/src/core.cpp.o
-[ 23%] Linking CXX static library liblab.a
 [ 23%] Built target lab
-[ 30%] Building CXX object CMakeFiles/reference_tests.dir/tests/reference.cpp.o
-[ 38%] Building CXX object CMakeFiles/experiment_cli.dir/src/main.cpp.o
-[ 46%] Linking CXX executable reference_tests
-[ 53%] Linking CXX executable experiment_cli
 [ 53%] Built target reference_tests
-[ 61%] Building CXX object CMakeFiles/analysis_tests.dir/tests/analysis.cpp.o
-[ 61%] Built target experiment_cli
-[ 69%] Building CXX object CMakeFiles/demo.dir/examples/demo.cpp.o
-[ 76%] Linking CXX executable analysis_tests
-[ 84%] Linking CXX executable demo
+[ 53%] Built target experiment_cli
 [ 84%] Built target analysis_tests
-[ 92%] Building CXX object CMakeFiles/benchmark.dir/benchmarks/benchmark.cpp.o
-[ 92%] Built target demo
-[100%] Linking CXX executable benchmark
+[ 84%] Built target demo
 [100%] Built target benchmark
 Internal ctest changing into directory: /home/ozan/Documents/Codex/2026-11-01/make/work/synthetic-portfolio/differential-drive-odometry/build
 Test project /home/ozan/Documents/Codex/2026-11-01/make/work/synthetic-portfolio/differential-drive-odometry/build
     Start 1: reference
-1/3 Test #1: reference ........................   Passed    0.00 sec
+1/4 Test #1: reference ........................   Passed    0.02 sec
     Start 2: analysis
-2/3 Test #2: analysis .........................   Passed    0.00 sec
+2/4 Test #2: analysis .........................   Passed    0.02 sec
     Start 3: cli_invalid
-3/3 Test #3: cli_invalid ......................   Passed    0.00 sec
+3/4 Test #3: cli_invalid ......................   Passed    0.01 sec
+    Start 4: cli_example
+4/4 Test #4: cli_example ......................   Passed    0.01 sec
 
-100% tests passed, 0 tests failed out of 3
+100% tests passed, 0 tests failed out of 4
 
-Total Test time (real) =   0.01 sec
-seconds,0.0066977
+Total Test time (real) =   0.06 sec
+seconds,0.0095251
 0.0257153,0.000109304,0.00850104
 0.0514288,0.000437209,0.0170021
 0.0771386,0.000983691,0.0255031
